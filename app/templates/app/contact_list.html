@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Contact list{% endblock %}
+
+{% block content %}
+
+	{% if contact_list %}
+		<h3>Click on a contact to view details</h3>
+		<ul class="list-group">
+		{% for contact in contact_list %}
+			<li class="list-group-item">
+				<a href="{{ contact.get_absolute_url }}">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					 {{ contact.full_name }}
+				</a>
+			</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<h1>The phonebook is empty!</h1>
+	{% endif %}
+
+{% endblock %}

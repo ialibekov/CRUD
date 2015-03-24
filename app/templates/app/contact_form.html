@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+
+{% block title %}{% if contact %}Updating {{contact.full_name}}{% else %}Add a new contact{% endif %}{% endblock %}
+
+{% block content %}
+	<h3>{% if contact %}Updating {{contact.full_name}}{% else %}Add a new contact{% endif %}</h3>
+	<form action="" method="post">{% csrf_token %}
+		{% for field in form %}
+			<div class="form-group">
+				{% if field.errors %}
+				<div class="alert alert-danger" role="alert">{{ field.errors }}</div>
+				{% endif %}				
+				<label>{{ field.label }}</label>				
+				{{ field }}
+			</div>
+		{% endfor %}
+		<input type="submit" class="btn btn-primary" value="Save"/>
+		<input type="button" class="btn btn-danger" value="Cancel" onclick="window.history.go(-1);"/>
+	</form>
+{% endblock %}

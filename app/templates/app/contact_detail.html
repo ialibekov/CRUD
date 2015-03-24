@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+
+{% block title %}{{ contact.full_name }}{% endblock %}
+
+{% block content %}
+
+	<table class="table">	
+		<tr><th>Full name:</th><td>{{ contact.full_name }}</td></tr>
+		<tr><th>Home phone:</th><td>{{ contact.home_phone }}</td></tr>
+		<tr><th>Mobile phone:</th><td>{{ contact.mobile_phone }}</td></tr>
+		<tr><th>Email:</th><td>{{ contact.email }}</td></tr>
+		<tr><th>Created:</th><td>{{ contact.created }}</td></tr>
+		<tr><th>Last update:</th><td>{{ contact.last_update }}</td></tr>
+	</table>
+	<div class="btn-group" role="group">
+		<a href="{{ contact.get_update_url }}" type="button" class="btn btn-success">
+			<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Update
+		</a>
+		<a href="{{ contact.get_delete_url }}" type="button" class="btn btn-danger">
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+		</a>	
+	</div>
+
+{% endblock %}
